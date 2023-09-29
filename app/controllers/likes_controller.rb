@@ -3,7 +3,6 @@ class LikesController < ApplicationController
     user_id = params[:user_id]
     post_id = params[:post_id]
 
-
     @post = Post.find(post_id)
 
     @like = Like.new(user_id:, post_id:)
