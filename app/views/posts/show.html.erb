@@ -7,6 +7,12 @@
         <p class="user-post-text">
             <%= @post.text %>
         </p>
+
+<%= form_with model: @like, url: user_post_likes_path(user_id: @post.author.id, post_id: @post.id), method: :post, remote: true do |form| %>
+  <%= form.submit 'Like', class: 'like-button' %>
+<% end %>
+
+
     </div>
     <ul class="user-post-box-2">
         <% @post.comments.each do |comment| %>
@@ -16,3 +22,4 @@
         <% end %>
     </ul>
 </div>
+
