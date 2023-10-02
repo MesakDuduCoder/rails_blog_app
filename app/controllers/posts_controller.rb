@@ -8,7 +8,7 @@ class PostsController < ApplicationController
 
   def show; end
 
-  def create  
+  def create
     @post = @user.posts.build(post_params)
 
     if @post.save
