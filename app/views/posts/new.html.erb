@@ -1,4 +1,4 @@
-<%= form_with model: current_user.posts.build, url: user_posts_path(current_user), method: :post do |form| %>
+<%= form_with model: @user.posts.build, url: user_posts_path(@user), method: :post do |form| %>
   <%= form.label :title, 'Title' %>
   <%= form.text_field :title %>
 
