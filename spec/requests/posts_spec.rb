@@ -15,7 +15,7 @@ RSpec.describe 'PostsController', type: :request do
 
     it 'includes correct placeholder text in the response body' do
       get user_posts_path(user)
-      expect(response.body).to include('Posts')
+      expect(response.body).to include('Create New Post')
     end
   end
 

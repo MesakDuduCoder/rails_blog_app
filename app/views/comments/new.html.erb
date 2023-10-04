@@ -1,4 +1,4 @@
-<%= form_with model: current_user.posts.find(params[:post_id]).comments.build, url: user_post_comments_path(current_user), method: :post do |form| %>
+<%= form_with model: Comment, url: user_post_comments_path(@user), method: :post do |form| %>
   <%= form.label :text, 'Comment Text' %>
   <%= form.text_area :text %>
   <%= form.submit 'Create Comment' %>

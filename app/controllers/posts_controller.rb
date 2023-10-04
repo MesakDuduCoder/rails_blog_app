@@ -3,17 +3,16 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show]
 
   def index
-    @posts = @user.posts
+    @posts = @user.posts.includes(:comments)
   end
 
   def show; end
 
   def create
-    puts 'create method is being called!'
-    @post = current_user.posts.build(post_params)
+    @post = @user.posts.build(post_params)
 
     if @post.save
-      redirect_to user_posts_path(current_user), notice: 'Post created successfully.'
+      redirect_to user_posts_path(params[:user_id]), notice: 'Post created successfully.'
     else
       flash[:error] = @post.errors.full_messages.join(', ')
       render :new

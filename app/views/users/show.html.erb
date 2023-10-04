@@ -13,6 +13,7 @@
 
   <ul class="user-posts">
     <% @user.recent_posts.each do |post| %>
+      <%= link_to user_post_path(@user, post), class: 'no-text-decoration' do %>
       <li class="user-post">
           <h2><%= post.title %></h2>
           <p><%= post.text %></p>
@@ -21,6 +22,7 @@
             <span>Likes: <%= post.likes_counter %></span>
           </div>
       </li>
+      <% end %>
     <% end %>
   </ul>
   

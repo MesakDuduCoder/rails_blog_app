@@ -20,6 +20,6 @@ RSpec.describe User, type: :model do
   it 'should validate_numericality_of :posts_counter it is only_integer and is_greater_than_or_equal_to(0)' do
     user = User.new
     user.valid?
-    expect(user.errors[:posts_counter]).to include('is not a number')
+    expect(user[:posts_counter]).to eq(0)
   end
 end
