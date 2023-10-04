@@ -51,7 +51,6 @@ RSpec.feature 'User index and show', type: :feature do
     expect(page).to have_content('Chloe: This is 6th comment') and have_content('Lilly: This is 7th comment')
   end
 
-  
   scenario 'click single post' do
     visit users_path
     find("a[href='#{user_path(user1)}']").click
