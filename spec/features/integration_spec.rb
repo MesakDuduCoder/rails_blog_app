@@ -36,4 +36,18 @@ RSpec.feature 'User index and show', type: :feature do
     expect(page).not_to have_content('This is Post 2')
     expect(page).not_to have_content('This is Post 1')
   end
+
+  scenario 'user click see all posts' do
+    visit users_path
+    find("a[href='#{user_path(user1)}']").click
+    find("a[href='#{user_posts_path(user1)}']").click
+    expect(current_path).to eq(user_posts_path(user1))
+    expect(page).to have_selector('.user-photo img', count: 1)
+    expect(page).to have_content('Lilly') and have_content('Number of posts: 4')
+    expect(page).to have_content('Post 1') and have_content('This is Post 1') and have_content('Comments: 6 Likes: 1')
+    expect(page).not_to have_content('John: This is 1st comment')
+    expect(page).to have_content('John: This is 2nd comment') and have_content('John: This is 3rd comment')
+    expect(page).to have_content('Chloe: This is 4th comment') and have_content('Chloe: This is 5th comment')
+    expect(page).to have_content('Chloe: This is 6th comment') and have_content('Lilly: This is 7th comment')
+  end
 end
