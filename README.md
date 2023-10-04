@@ -132,6 +132,13 @@ To run the project, execute the following command:
 - Twitter: [@twitterhandle](https://twitter.com/mesak_10)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/mesak-lalrindika/)
 
+👤 **Anita Sharma**
+
+- GitHub: [@anita00001](https://github.com/anita00001)
+- LinkedIn: [anitaa-sharmaa](https://www.linkedin.com/in/anitaa-sharmaa/)
+- Twitter: [@anitaa_sharmaa](https://twitter.com/anitaa_sharmaa)
+
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- FUTURE FEATURES -->
