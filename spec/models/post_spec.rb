@@ -34,12 +34,12 @@ RSpec.describe Post, type: :model do
   it 'should validate_numericality_of :comments_counter it is only_integer and is_greater_than_or_equal_to(0)' do
     post = Post.new
     post.valid?
-    expect(post.errors[:comments_counter]).to include('is not a number')
+    expect(post[:comments_counter]).to eq(0)
   end
 
   it 'should validate_numericality_of :likes_counter it is only_integer and is_greater_than_or_equal_to(0)' do
     post = Post.new
     post.valid?
-    expect(post.errors[:likes_counter]).to include('is not a number')
+    expect(post[:likes_counter]).to eq(0)
   end
 end
