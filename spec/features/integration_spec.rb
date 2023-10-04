@@ -24,4 +24,16 @@ RSpec.feature 'User index and show', type: :feature do
     expect(page).to have_selector('.name', count: 3)
     expect(page).to have_selector('.posts-counter', count: 3)
   end
+
+  scenario 'User goes to user details page' do
+    visit users_path
+    find("a[href='#{user_path(user1)}']").click
+    expect(current_path).to eq(user_path(user1))
+    expect(page).to have_selector('.user-photo img', count: 1)
+    expect(page).to have_content('Lilly') and have_content('Number of posts: 4')
+    expect(page).to have_content('Bio: teacher') and have_content('This is Post 3')
+    expect(page).to have_content('This is Post 4') and have_content('This is Post 5')
+    expect(page).not_to have_content('This is Post 2')
+    expect(page).not_to have_content('This is Post 1')
+  end
 end
