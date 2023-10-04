@@ -50,4 +50,19 @@ RSpec.feature 'User index and show', type: :feature do
     expect(page).to have_content('Chloe: This is 4th comment') and have_content('Chloe: This is 5th comment')
     expect(page).to have_content('Chloe: This is 6th comment') and have_content('Lilly: This is 7th comment')
   end
+
+  
+  scenario 'click single post' do
+    visit users_path
+    find("a[href='#{user_path(user1)}']").click
+    find("a[href='#{user_posts_path(user1)}']").click
+    find("a[href='#{user_post_path(user1, post1)}']").click
+    expect(current_path).to eq(user_post_path(user1, post1))
+    expect(page).to have_content('John: This is 1st comment')
+    expect(page).to have_content('John: This is 2nd comment')
+    expect(page).to have_content('John: This is 3rd comment')
+    expect(page).to have_content('Chloe: This is 4th comment')
+    expect(page).to have_content('Chloe: This is 5th comment')
+    expect(page).to have_content('Chloe: This is 6th comment')
+  end
 end
