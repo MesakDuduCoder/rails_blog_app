@@ -1,12 +1,12 @@
 <%= stylesheet_link_tag 'styles' %>
 
 <div class="users">
+<% if user_signed_in? %>
+  <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
+<% end %>
     <% @users.each do |user| %>
         <%= link_to user_path(user), class: 'no-text-decoration' do %>
         <div class="user-card">
-            <div class="user-photo">
-                <%= image_tag user.photo, class: "image-contain" %>
-            </div>
             <div class="user-name">
                 <h2 class="name"><%= user.name %></h2>
                 <p class="posts-counter">Number of posts: <%= user.posts_counter %></p>
