@@ -50,6 +50,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_05_080205) do
     t.text "bio"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "role"
     t.integer "posts_counter", default: 0
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
