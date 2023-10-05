@@ -6,6 +6,7 @@ gem 'factory_bot_rails'
 gem 'rails-controller-testing'
 gem 'rspec-rails'
 gem 'rubocop', '>= 1.0', '< 2.0'
+gem 'cancancan'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'rails', '~> 7.0.8'
