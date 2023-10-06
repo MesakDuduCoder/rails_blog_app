@@ -8,12 +8,17 @@
       <%= @post.text %>
     </p>
 
-  <%= form_with model: @like, url: user_post_likes_path(user_id: @post.author.id, post_id: @post.id), method: :post, remote: true do |form| %>
-    <%= form.submit 'Like', class: 'like-button' %>
-  <% end %>
+    <%= form_with model: @like, url: user_post_likes_path(user_id: @post.author.id, post_id: @post.id), method: :post, remote: true do |form| %>
+      <%= form.submit 'Like', class: 'like-button' %>
+    <% end %>
 
-
+    <% if can? :destroy, @post %>
+      <%= form_with model: @post, url: user_post_path(@user, @post), method: :delete, remote: true do |form| %>
+        <%= form.submit 'Delete', class: 'delete-button' %>
+      <% end %>
+    <% end %>
   </div>
+
   <ul class="user-post-box-2">
     <% @post.comments.each do |comment| %>
     <li>
