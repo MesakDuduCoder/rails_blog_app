@@ -1,8 +1,13 @@
 class Api::V1::CommentsController < ApplicationController
   skip_before_action :verify_authenticity_token
-  skip_before_action :authenticate_user!
   before_action :find_user
   before_action :find_post
+
+  def index
+    @comments = Comment.all
+    render json: @comments
+  end
+
   def create
     @comment = @post.comments.build(user: current_user, text: comment_params[:text])
     if @comment.save
