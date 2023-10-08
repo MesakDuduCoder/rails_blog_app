@@ -1,0 +1,234 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/api/v1/users/{user_id}/posts/{post_id}/comments":
+    get:
+      summary: Retrieves all comments
+      tags:
+      - Comments
+      responses:
+        '200':
+          description: comments found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  text:
+                    type: string
+                  created_at:
+                    type: string
+                  updated_at:
+                    type: string
+                  user_id:
+                    type: integer
+                  post_id:
+                    type: integer
+                required:
+                - id
+                - text
+                - created_at
+                - updated_at
+                - user_id
+                - post_id
+            application/xml:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  text:
+                    type: string
+                  created_at:
+                    type: string
+                  updated_at:
+                    type: string
+                  user_id:
+                    type: integer
+                  post_id:
+                    type: integer
+                required:
+                - id
+                - text
+                - created_at
+                - updated_at
+                - user_id
+                - post_id
+    post:
+      summary: Creates a comment
+      tags:
+      - Comments
+      parameters: []
+      responses:
+        '201':
+          description: comment created
+        '422':
+          description: invalid request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                text:
+                  type: string
+              required:
+              - text
+          application/xml:
+            schema:
+              type: object
+              properties:
+                text:
+                  type: string
+              required:
+              - text
+  "/api/v1/users/{user_id}/posts":
+    get:
+      summary: Retrieves all posts
+      tags:
+      - Posts
+      responses:
+        '200':
+          description: posts found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  title:
+                    type: string
+                  text:
+                    type: string
+                  created_at:
+                    type: string
+                  updated_at:
+                    type: string
+                  comments_counter:
+                    type: integer
+                  likes_counter:
+                    type: integer
+                  author_id:
+                    type: integer
+                required:
+                - id
+                - title
+                - text
+                - created_at
+                - updated_at
+                - comments_counter
+                - likes_counter
+                - author_id
+            application/xml:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  title:
+                    type: string
+                  text:
+                    type: string
+                  created_at:
+                    type: string
+                  updated_at:
+                    type: string
+                  comments_counter:
+                    type: integer
+                  likes_counter:
+                    type: integer
+                  author_id:
+                    type: integer
+                required:
+                - id
+                - title
+                - text
+                - created_at
+                - updated_at
+                - comments_counter
+                - likes_counter
+                - author_id
+  "/api/v1/users":
+    get:
+      summary: Retrieves all users
+      tags:
+      - Users
+      responses:
+        '200':
+          description: users found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  photo:
+                    type: string
+                  bio:
+                    type: string
+                  created_at:
+                    type: string
+                  updated_at:
+                    type: string
+                  role:
+                    type: string
+                  posts_counter:
+                    type: integer
+                  email:
+                    type: string
+                required:
+                - id
+                - name
+                - photo
+                - bio
+                - created_at
+                - updated_at
+                - role
+                - posts_counter
+                - email
+            application/xml:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  photo:
+                    type: string
+                  bio:
+                    type: string
+                  created_at:
+                    type: string
+                  updated_at:
+                    type: string
+                  role:
+                    type: string
+                  posts_counter:
+                    type: integer
+                  email:
+                    type: string
+                required:
+                - id
+                - name
+                - photo
+                - bio
+                - created_at
+                - updated_at
+                - role
+                - posts_counter
+                - email
+servers:
+- url: http://{defaultHost}
+  variables:
+    defaultHost:
+      default: 127.0.0.1:3000/
