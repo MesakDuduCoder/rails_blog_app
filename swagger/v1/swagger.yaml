@@ -5,26 +5,62 @@ info:
   version: v1
 paths:
   "/api/v1/users/{user_id}/posts/{post_id}/comments":
-    parameters:
-    - name: user_id
-      in: path
-      required: true
-      schema:
-        type: integer
-    - name: post_id
-      in: path
-      required: true
-      schema:
-        type: integer
     get:
-      summary: Retrieves comments for a specific post
+      summary: Retrieves all comments
       tags:
       - Comments
       responses:
         '200':
-          description: list of comments
+          description: comments found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  text:
+                    type: string
+                  created_at:
+                    type: string
+                  updated_at:
+                    type: string
+                  user_id:
+                    type: integer
+                  post_id:
+                    type: integer
+                required:
+                - id
+                - text
+                - created_at
+                - updated_at
+                - user_id
+                - post_id
+            application/xml:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  text:
+                    type: string
+                  created_at:
+                    type: string
+                  updated_at:
+                    type: string
+                  user_id:
+                    type: integer
+                  post_id:
+                    type: integer
+                required:
+                - id
+                - text
+                - created_at
+                - updated_at
+                - user_id
+                - post_id
     post:
-      summary: Creates a new comment for a post
+      summary: Creates a comment
       tags:
       - Comments
       parameters: []
@@ -32,30 +68,167 @@ paths:
         '201':
           description: comment created
         '422':
-          description: unprocessable_entity
+          description: invalid request
       requestBody:
         content:
           application/json:
             schema:
-              "$ref": "#/components/schemas/CommentInput"
-  "/api/v1/posts":
+              type: object
+              properties:
+                text:
+                  type: string
+              required:
+              - text
+          application/xml:
+            schema:
+              type: object
+              properties:
+                text:
+                  type: string
+              required:
+              - text
+  "/api/v1/users/{user_id}/posts":
     get:
-      summary: Retrieves a list of posts
+      summary: Retrieves all posts
       tags:
       - Posts
       responses:
         '200':
-          description: list of posts
+          description: posts found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  title:
+                    type: string
+                  text:
+                    type: string
+                  created_at:
+                    type: string
+                  updated_at:
+                    type: string
+                  comments_counter:
+                    type: integer
+                  likes_counter:
+                    type: integer
+                  author_id:
+                    type: integer
+                required:
+                - id
+                - title
+                - text
+                - created_at
+                - updated_at
+                - comments_counter
+                - likes_counter
+                - author_id
+            application/xml:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  title:
+                    type: string
+                  text:
+                    type: string
+                  created_at:
+                    type: string
+                  updated_at:
+                    type: string
+                  comments_counter:
+                    type: integer
+                  likes_counter:
+                    type: integer
+                  author_id:
+                    type: integer
+                required:
+                - id
+                - title
+                - text
+                - created_at
+                - updated_at
+                - comments_counter
+                - likes_counter
+                - author_id
   "/api/v1/users":
     get:
-      summary: Retrieves a list of users
+      summary: Retrieves all users
       tags:
       - Users
       responses:
         '200':
-          description: list of users
+          description: users found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  photo:
+                    type: string
+                  bio:
+                    type: string
+                  created_at:
+                    type: string
+                  updated_at:
+                    type: string
+                  role:
+                    type: string
+                  posts_counter:
+                    type: integer
+                  email:
+                    type: string
+                required:
+                - id
+                - name
+                - photo
+                - bio
+                - created_at
+                - updated_at
+                - role
+                - posts_counter
+                - email
+            application/xml:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  photo:
+                    type: string
+                  bio:
+                    type: string
+                  created_at:
+                    type: string
+                  updated_at:
+                    type: string
+                  role:
+                    type: string
+                  posts_counter:
+                    type: integer
+                  email:
+                    type: string
+                required:
+                - id
+                - name
+                - photo
+                - bio
+                - created_at
+                - updated_at
+                - role
+                - posts_counter
+                - email
 servers:
-- url: https://{defaultHost}
+- url: http://{defaultHost}
   variables:
     defaultHost:
-      default: www.example.com
+      default: 127.0.0.1:3000/
